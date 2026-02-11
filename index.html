@@ -1,49 +1,1012 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hound Dog Hills</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Hound Dog Hills | Premier Minnesota Outdoor Experiences</title>
+    <style>
+        :root {
+            --primary-color: #4A6D5E; /* Forest Green */
+            --secondary-color: #7D6B5D; /* Earthy Brown */
+            --accent-color: #D3A562; /* Goldenrod */
+            --text-light: #F0F2F5;
+            --text-dark: #333;
+            --background-dark: #2C3E50; /* Dark Blue-Gray */
+            --background-light: #F8F8F8;
+            --font-family-sans: 'Arial', sans-serif;
+            --font-family-serif: 'Georgia', serif;
+        }
+
+        body {
+            font-family: var(--font-family-sans);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background-light);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--text-light);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            background: url('https://images.unsplash.com/photo-1557050543-4d5f48600a42?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+            color: var(--text-light);
+            text-align: center;
+            padding: 100px 20px;
+            height: 60vh; /* Adjust height as needed */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--background-dark);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn:hover {
+            background-color: #B28F4E; /* A darker goldenrod */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        section {
+            padding: 3rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h3 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h3::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .about-item h4 {
+            color: var(--secondary-color);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .about-item p {
+            margin: 0;
+        }
+
+        .journey-timeline {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin-top: 3rem;
+        }
+
+        .journey-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: var(--primary-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            position: relative;
+            width: 100%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-item .date {
+            width: 45%;
+            padding: 10px 20px;
+            text-align: right;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .timeline-item:nth-child(odd) .date {
+            text-align: left;
+        }
+
+        .timeline-item .content-box {
+            width: 45%;
+            background: var(--background-dark);
+            color: var(--text-light);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-item .content-box::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid var(--background-dark);
+            right: -10px;
+        }
+        .timeline-item:nth-child(odd) .content-box::before {
+            border-left: none;
+            border-right: 10px solid var(--background-dark);
+            left: -10px;
+        }
+
+        .timeline-item .content-box h4 {
+            margin-top: 0;
+            color: var(--accent-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .service-card {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .service-card .icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h4 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-top: 1rem;
+        }
+
+        .service-card ul li {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .service-card ul li::before {
+            content: '✓';
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .pricing-card {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .pricing-card h4 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card .duration {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-card ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .pricing-card ul li::before {
+            content: '✓';
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .location-section {
+            text-align: center;
+            padding: 3rem 0;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+        }
+
+        .location-section h3 {
+            color: var(--accent-color);
+        }
+        .location-section h3::after {
+            background-color: var(--text-light);
+        }
+
+        .location-map {
+            background: url('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 400px;
+            margin-top: 2rem;
+            position: relative;
+            border-radius: 8px;
+        }
+
+        .map-marker {
+            position: absolute;
+            background-color: var(--accent-color);
+            color: var(--background-dark);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            cursor: pointer;
+            border: 2px solid var(--text-light);
+        }
+        /* Example positioning, adjust as needed */
+        .marker-lodge { top: 30%; left: 25%; }
+        .marker-kennels { top: 20%; left: 60%; }
+        .marker-cabins { top: 70%; left: 40%; }
+        .marker-lake { top: 50%; left: 75%; }
+
+        .location-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .location-point .icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+        .location-point {
+            display: flex;
+            align-items: center;
+        }
+        .location-point div {
+            font-size: 0.9rem;
+        }
+        .location-point h5 {
+            margin: 0;
+            color: var(--text-light);
+        }
+        .location-point p {
+            margin: 0;
+            color: #ccc;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .testimonial-card .quote {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .testimonial-card .author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .contact-section {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .contact-section h3 {
+            color: var(--accent-color);
+        }
+        .contact-section h3::after {
+            background-color: var(--text-light);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .contact-item .icon {
+            font-size: 1.8rem;
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        .contact-form {
+            background-color: var(--background-light);
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: left;
+            color: var(--text-dark);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form input[type="tel"],
+        .contact-form textarea,
+        .contact-form select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: var(--font-family-sans);
+            font-size: 1rem;
+        }
+        .contact-form input[type="text"]:focus,
+        .contact-form input[type="email"]:focus,
+        .contact-form input[type="tel"]:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-form button {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #3B574A; /* A darker green */
+        }
+
+        footer {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        footer .social-links a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        footer .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+            }
+            nav ul {
+                margin-top: 1rem;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .timeline-item {
+                flex-direction: column;
+                align-items: center;
+            }
+            .timeline-item:nth-child(odd) {
+                flex-direction: column;
+            }
+            .timeline-item .date, .timeline-item .content-box {
+                width: 90%;
+                text-align: center;
+            }
+            .timeline-item .date {
+                 text-align: center;
+            }
+            .timeline-item .content-box::before {
+                left: 50%;
+                transform: translateX(-50%) rotate(90deg);
+                top: -10px;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-bottom: 10px solid var(--background-dark);
+            }
+            .timeline-item:nth-child(odd) .content-box::before {
+                left: 50%;
+                transform: translateX(-50%) rotate(90deg);
+                top: -10px;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-bottom: 10px solid var(--background-dark);
+            }
+
+            .contact-info {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
+
     <header>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <h1 class="logo">🏔️ HOUND DOG HILLS</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Our Story</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <main>
-        <section class="hero">
-            <img src="https://picsum.photos/2000/1000" alt="Minnesota Wilderness">
-            <h1>Welcome to Hound Dog Hills</h1>
-        </section>
-        <section class="features">
-            <h2>Outdoor Adventures</h2>
-            <ul>
-                <li>
-                    <img src="https://picsum.photos/400/300" alt="Hunting">
-                    <p>Hunting</p>
-                </li>
-                <li>
-                    <img src="https://picsum.photos/400/300" alt="Fishing">
-                    <p>Fishing</p>
-                </li>
-                <li>
-                    <img src="https://picsum.photos/400/300" alt="Hiking">
-                    <p>Hiking</p>
-                </li>
-            </ul>
-        </section>
-    </main>
+
+    <section id="home" class="hero">
+        <h2>HOUND DOG HILLS</h2>
+        <p>Premier Outdoor Experiences</p>
+        <a href="#services" class="btn">Explore Services</a>
+        <a href="#gallery" class="btn" style="margin-left: 15px;">View Gallery</a>
+    </section>
+
+    <section id="about" class="container">
+        <h3>Our Story</h3>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">
+            Welcome to Hound Dog Hills, where tradition meets adventure in the heart of Minnesota. For over 25 years, we've been creating unforgettable outdoor experiences for hunting enthusiasts, dog lovers, and nature seekers alike. Nestled in the rolling hills near Dunvilla, our 1,500-acre preserve offers pristine woodlands, private lakes, and vast open fields - the perfect backdrop for your next great adventure.
+        </p>
+
+        <div class="about-grid">
+            <div class="about-item">
+                <h4>25+</h4>
+                <p>Years</p>
+            </div>
+            <div class="about-item">
+                <h4>1500</h4>
+                <p>Acres</p>
+            </div>
+            <div class="about-item">
+                <h4>500+</h4>
+                <p>Clients</p>
+            </div>
+            <div class="about-item">
+                <h4>3</h4>
+                <p>Lakes</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 3rem;">Our Journey</h3>
+        <div class="journey-timeline">
+            <div class="timeline-item">
+                <div class="date">1998</div>
+                <div class="content-box">
+                    <h4>The Beginning</h4>
+                    <p>Founded with a vision to create Minnesota's premier hunting and outdoor experience. Started with just 200 acres and a dream.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="date">2005</div>
+                <div class="content-box">
+                    <h4>Dog Training Center</h4>
+                    <p>Expanded to include professional dog training facilities. Added obedience programs and field training for hunting companions.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="date">2012</div>
+                <div class="content-box">
+                    <h4>Cabin Lodging</h4>
+                    <p>Opened luxury cabin accommodations, allowing guests to extended their stays and experience the full Minnesota wilderness.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="date">2024</div>
+                <div class="content-box">
+                    <h4>Today</h4>
+                    <p>Now spanning 1,500 acres with 3 private lakes, we continue to deliver world-class outdoor experiences for generations of families.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="container">
+        <h3>What We Offer</h3>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">
+            Everything you need for the ultimate Minnesota outdoor adventure
+        </p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1589953365968-93f1939a6662?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hunting dog">
+                <span class="icon">🎯</span>
+                <h4>Guided Hunting</h4>
+                <p>Expert-guided pheasant, waterfowl, and turkey hunts across our private grounds.</p>
+                <ul>
+                    <li>Professional guides</li>
+                    <li>Dog handling included</li>
+                    <li>All equipment available</li>
+                </ul>
+                <a href="#contact" class="btn">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Happy dog">
+                <span class="icon">🏠</span>
+                <h4>Dog Boarding & Training</h4>
+                <p>Premium boarding and professional training for your four-legged companions.</p>
+                <ul>
+                    <li>Climate-controlled kennels</li>
+                    <li>Daily field exercise</li>
+                    <li>Obedience training</li>
+                </ul>
+                <a href="#contact" class="btn">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cabin">
+                <span class="icon">🏕️</span>
+                <h4>Cabin Lodging</h4>
+                <p>Cozy cabins with modern amenities, situated on private lakeshores.</p>
+                <ul>
+                    <li>Fully equipped kitchens</li>
+                    <li>Private lake access</li>
+                    <li>Fire pits & grills</li>
+                </ul>
+                <a href="#contact" class="btn">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Minnesota lake">
+                <span class="icon">🎣</span>
+                <h4>Fishing Adventures</h4>
+                <p>Private lake fishing for walleye, northern, and bass. Boat rentals included.</p>
+                <ul>
+                    <li>3 private lakes</li>
+                    <li>Fishing guides available</li>
+                    <li>Fish cleaning services</li>
+                </ul>
+                <a href="#contact" class="btn">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1553522991-71439fa7f8b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dog training">
+                <span class="icon">📚</span>
+                <h4>Training Programs</h4>
+                <p>From basic obedience to advanced field training for hunting dogs.</p>
+                <ul>
+                    <li>Positive reinforcement</li>
+                    <li>Board & train options</li>
+                    <li>Progress reports</li>
+                </ul>
+                <a href="#contact" class="btn">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Wildflowers">
+                <span class="icon">🎉</span>
+                <h4>Events & Corporate</h4>
+                <p>Host your next corporate retreat, family reunion, or special event with us.</p>
+                <ul>
+                    <li>Full catering available</li>
+                    <li>Team building activities</li>
+                    <li>Custom packages</li>
+                </ul>
+                <a href="#contact" class="btn">Learn More →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="container">
+        <h3>Investment</h3>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">Pricing Plans</p>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h4>Day Hunt</h4>
+                <p>Perfect for a quick adventure</p>
+                <div class="price">$$250</div>
+                <div class="duration">per person / day</div>
+                <ul>
+                    <li>Guided hunt (4 hours)</li>
+                    <li>Dog handling</li>
+                    <li>Lunch included</li>
+                    <li>Field dressing</li>
+                </ul>
+                <a href="#contact" class="btn">Book Now</a>
+            </div>
+            <div class="pricing-card popular">
+                <h4>Weekend Package</h4>
+                <p>The full experience</p>
+                <div class="price">$$890</div>
+                <div class="duration">per person / 2 days</div>
+                <ul>
+                    <li>2 full hunting days</li>
+                    <li>Cabin lodging</li>
+                    <li>All meals included</li>
+                    <li>Dog training session</li>
+                    <li>Fishing excursion</li>
+                </ul>
+                <a href="#contact" class="btn">Book Now</a>
+            </div>
+            <div class="pricing-card">
+                <h4>Week Adventure</h4>
+                <p>The ultimate getaway</p>
+                <div class="price">$$2,490</div>
+                <div class="duration">per person / 5 days</div>
+                <ul>
+                    <li>5 hunting days</li>
+                    <li>Premium cabin</li>
+                    <li>All meals & drinks</li>
+                    <li>Unlimited fishing</li>
+                    <li>Advanced dog training</li>
+                </ul>
+                <a href="#contact" class="btn">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="container">
+        <h3>Explore</h3>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">Photo Gallery</p>
+
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1557050543-4d5f48600a42?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Golden retriever"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Minnesota lake"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Wildflowers"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1589953365968-93f1939a6662?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hunting dog"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cabin"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Happy dog"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1501706362039-c06b2f715389?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Nature"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1605453728583-05b2f9f7125e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Duck hunting"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1553522991-71439fa7f8b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dog training"></div>
+        </div>
+    </section>
+
+    <section id="location" class="location-section">
+        <div class="container">
+            <h3>Our Location</h3>
+            <p>Find Your Way to Adventure</p>
+            <p style="max-width: 700px; margin: 1rem auto 3rem;">
+                Located in the heart of Minnesota's lake country, Hound Dog Hills offers easy access while feeling miles away from civilization. Click the map markers to learn about our different facilities.
+            </p>
+
+            <div class="location-map">
+                <div class="map-marker marker-lodge" title="Main Lodge & Hunting Grounds">📍</div>
+                <div class="map-marker marker-kennels" title="Kennels & Training Center">🏠</div>
+                <div class="map-marker marker-cabins" title="Cabin Village">🏕️</div>
+                <div class="map-marker marker-lake" title="Lake Access Points">🎣</div>
+            </div>
+
+            <div class="location-points">
+                <div class="location-point">
+                    <span class="icon">🎯</span>
+                    <div>
+                        <h5>Main Lodge & Hunting Grounds</h5>
+                        <p>Center of 1,500 acres</p>
+                    </div>
+                </div>
+                <div class="location-point">
+                    <span class="icon">🏠</span>
+                    <div>
+                        <h5>Kennels & Training Center</h5>
+                        <p>North side of property</p>
+                    </div>
+                </div>
+                <div class="location-point">
+                    <span class="icon">🏕️</span>
+                    <div>
+                        <h5>Cabin Village</h5>
+                        <p>Lakeshore area</p>
+                    </div>
+                </div>
+                <div class="location-point">
+                    <span class="icon">🎣</span>
+                    <div>
+                        <h5>Lake Access Points</h5>
+                        <p>3 private fishing lakes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="container">
+        <h3>Testimonials</h3>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">What Our Guests Say</p>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="quote">"The best hunting experience of my life! The guides knew exactly where to find the birds, and my German Shorthaired Pointer had an absolute blast. Already booked for next fall!"</p>
+                <p class="author">John D. <br> St. Paul, MN</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="quote">"We brought our golden for a week of training and boarding. The staff treated him like family and he came home exhausted and happy. The cabins are beautiful too!"</p>
+                <p class="author">Sarah M. <br> Minneapolis, MN</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="quote">"Three generations of our family had an amazing weekend. Great fishing, beautiful scenery, and memories that will last a lifetime. We'll definitely be back!"</p>
+                <p class="author">Robert K. <br> Fargo, ND</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h3>Get Started</h3>
+            <p>Book Your Adventure</p>
+            <p style="max-width: 700px; margin: 1rem auto 3rem;">
+                Ready to experience Hound Dog Hills? Fill out the form and we'll get back to you within 24 hours with availability and custom packages.
+            </p>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="icon">📍</span> Dunvilla, Minnesota 56544
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📞</span> (555) 123-4567
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📧</span> info@hounddoghills.com
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form action="#" method="POST"> <!-- Action should point to your form handling endpoint -->
+                    <label for="first_name">First Name *</label>
+                    <input type="text" id="first_name" name="first_name" required>
+
+                    <label for="last_name">Last Name *</label>
+                    <input type="text" id="last_name" name="last_name" required>
+
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone">
+
+                    <label for="service_interest">Service Interest *</label>
+                    <select id="service_interest" name="service_interest" required>
+                        <option value="">Select a service</option>
+                        <option value="hunting">Guided Hunting</option>
+                        <option value="boarding_training">Dog Boarding & Training</option>
+                        <option value="lodging">Cabin Lodging</option>
+                        <option value="fishing">Fishing Adventures</option>
+                        <option value="training_programs">Training Programs</option>
+                        <option value="events">Events & Corporate</option>
+                    </select>
+
+                    <label for="preferred_date">Preferred Date</label>
+                    <input type="date" id="preferred_date" name="preferred_date">
+
+                    <label for="num_guests">Number of Guests</label>
+                    <input type="number" id="num_guests" name="num_guests" value="2" min="1">
+
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required></textarea>
+
+                    <button type="submit">Send Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; 2023 Hound Dog Hills</p>
+        <div class="container">
+            <h3 style="color: var(--text-light);">🏔️ HOUND DOG HILLS</h3>
+            <p>Premium Outdoor Experiences Since 1998</p>
+            <div class="social-links">
+                <a href="#"><span style="font-family: Arial, sans-serif;">📘</span></a>
+                <a href="#"><span style="font-family: Arial, sans-serif;">📷</span></a>
+                <a href="#"><span style="font-family: Arial, sans-serif;">🐦</span></a>
+                <a href="#"><span style="font-family: Arial, sans-serif;">📺</span></a>
+            </div>
+            <p>© 2024 Hound Dog Hills. All rights reserved. | Dunvilla, Minnesota</p>
+        </div>
     </footer>
+
 </body>
 </html>
